@@ -4,8 +4,8 @@
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Leave' => '#',
     'Configure' => '#',
-    'View Holiday' => route('view-holiday'),
-'This page',
+    'Holiday' => route('view-holiday'),
+
 ]])
 @section('plugins.Datatables', true)
  
@@ -61,7 +61,7 @@
 												<div class="modal-content">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" style="text-indent: 0;">&times;</button>
-														<h4 class="modal-title">User </h4>
+														<h4 class="modal-title">Holiday </h4>
 													</div>
 													<div class="modal-body">
 														<p>Sure about delete this</p>

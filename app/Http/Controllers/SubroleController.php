@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
-use App\Role;
-use App\SubRole;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\SubRole;
 use App\Usermanagement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -79,8 +79,12 @@ class SubroleController extends Controller
         $roles= DB::table('azhrms_user_role')->get();
         $roleedit= DB::table('azhrms_user_role_categories')->get();
         $roleedit = SubRole::findOrFail($id);
+
+        $editrole= DB::table('azhrms_user_role_categories')->select('azhrms_user_role.name as role_name','azhrms_user_role_categories.role_id as role')->
+    join('azhrms_user_role', 'azhrms_user_role_categories.role_id', '=', 'azhrms_user_role.id')
+    ->where('azhrms_user_role_categories.id',$id)->get();
  
-        return view('role.editsubrole', compact('roleedit','roles') );
+        return view('role.editsubrole', compact('roleedit','roles','editrole') );
     }
  
  
@@ -95,7 +99,7 @@ class SubroleController extends Controller
  
         $subrole= SubRole::findOrFail($id);
         $subrole->update($request->all());
-        return Redirect::to('view-sub-role')->with('success','Successfully Updated!');
+        return Redirect::back()->with('success','Successfully Updated!');
     }
  
 }

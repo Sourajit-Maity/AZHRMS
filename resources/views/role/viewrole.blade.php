@@ -3,9 +3,8 @@
 @section('content')
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Admin' => '#',
-    'User Roles' => '#',
-    'View Role' => route('view-role'),
-'This page',
+    'User Designation' => route('view-role'),
+
 ]])
 @section('plugins.Datatables', true)
     
@@ -13,7 +12,7 @@
         <div class="panel-body">
         <div class="row">
     <div class="form-group col-md-6">
-                <h2>Role</h2>
+                <h2>Designation</h2>
             </div>
             <div class="form-group col-md-6"; align="right">
                 <a class="btn btn-success" href="{{ route('add-role') }}"><i class="fas fa-plus-square"></i></a>
@@ -28,8 +27,8 @@
                     <thead>
                     <tr>
                         <!-- <th style="text-align:center;"><input type="checkbox" id="select-all" /></th> -->
-                        <th>Role Name</th>
-                        <th> Display Role Name</th>
+                        <th>Designation Id</th>
+                        <th> Display Designation Name</th>
                         
                         <th>Actions</th>
                     </tr>

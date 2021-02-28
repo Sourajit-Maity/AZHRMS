@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Role;
+use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Input;
@@ -79,7 +79,7 @@ class RoleController extends Controller
        $role= Role::findOrFail($id);
        $role->update($request->all());
       
-       return Redirect::to('view-role')->with('success','Successfully Updated!');
+       return Redirect::back()->with('success','Successfully Updated!');
    }
 
    public function deleterole(Request $request,$id)

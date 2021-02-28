@@ -4,8 +4,8 @@
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Leave' => '#',
     'Configure' => '#',
-    'View Leave Type' => route('view-leave-type'),
-'This page',
+    'Leave Type' => route('view-leave-type'),
+
 ]])
 @section('plugins.Datatables', true)
  

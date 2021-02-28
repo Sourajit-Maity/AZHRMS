@@ -3,9 +3,7 @@
 @section('content')
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Admin' => '#',
-    'User Role Categories' => '#',
-    'View Sub Role' => route('view-sub-role'),
-'This page',
+    'User Job Role' => route('view-sub-role'),
 ]])
 @section('plugins.Datatables', true)
     
@@ -13,7 +11,7 @@
         <div class="panel-body">
         <div class="row">
     <div class="form-group col-md-6">
-                <h2>SubRole</h2>
+                <h2>Job Role</h2>
             </div>
             <div class="form-group col-md-6"; align="right">
                 <a class="btn btn-success" href="{{ route('add-sub-role') }}"><i class="fas fa-plus-square"></i></a>
@@ -27,9 +25,9 @@
                     <thead>
                     <tr>
                     
-                        <th>Role Name</th>
-                        <th>Display Role Name</th>
-                        <th>Role</th>
+                        <th>Job Role Name</th>
+                        <th>Display Job Role Name</th>
+                        <th>Designation Id </th>
                         <th>Actions</th>
                     </tr>
                     </thead>

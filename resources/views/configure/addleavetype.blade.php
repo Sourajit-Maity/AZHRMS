@@ -4,8 +4,9 @@
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Leave' => '#',
     'Configure' => '#',
+    'Leave Type' => route('view-leave-type'),
     'Add Leave Type' => route('add-leave-type'),
-'This page',
+
 ]])
 <div class="container">
     <div class="row justify-content-center">
@@ -49,6 +50,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit') }}
                                 </button>
+                                <input type="button" onclick="history.go(-1);" value="Back" class="btn btn-primary">
                             </div>
                         </div>
                     </form>

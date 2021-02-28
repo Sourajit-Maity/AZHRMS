@@ -23,6 +23,33 @@ use DateTime;
 class ConfigureController extends Controller
 {
 
+    public function addleaveperiod()
+    {
+        return view('configure.addleaveperiod');
+    }
+
+
+    public function submitleaveperiod(Request $request)
+   {
+       
+    $this->validate($request, [
+ 
+        'leave_period_start_date'  => 'required',
+       
+        
+    ]);
+
+    LeavePeriodHistory::create([
+           
+           'leave_period_start_date' => $request->get('leave_period_start_date'),
+           
+       ]);
+
+     
+
+       return Redirect::to('view-leave-period')->with('success',' Created Successfully!');
+   }
+
 
 
     public function viewleaveperiod(Request $request)
@@ -123,7 +150,7 @@ class ConfigureController extends Controller
        $leave= LeaveType::findOrFail($id);
        $leave->update($request->all());
       
-       return Redirect::to('view-leave-type')->with('success','Successfully Updated!');
+       return Redirect::back()->with('success','Successfully Updated!');
    }
 
    public function deleteleavetype(Request $request,$id)
@@ -244,7 +271,7 @@ class ConfigureController extends Controller
        $leave= Holiday::findOrFail($id);
        $leave->update($request->all());
       
-       return Redirect::to('view-holiday')->with('success','Successfully Updated!');
+       return Redirect::back()->with('success','Successfully Updated!');
    }
 
    public function deleteholiday(Request $request,$id)

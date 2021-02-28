@@ -225,7 +225,8 @@ return [
 
  
 
-
+   
+    
     'menu' => [
         [
             'text' => 'search',
@@ -242,28 +243,210 @@ return [
         [
             'text'    => 'Admin',
             'icon'    => 'fas fa-users-cog',
+            'can'  => ['isSuperAdmin', 'isAdmin'],
             'submenu' => 
             [
                 [                
-                    'text'    => 'User Management',
+                    'text'    => 'Configurations',
+                    'icon'    => 'fas fa-users',
                     'url'     => '#',
+                    'can'  => ['isSuperAdmin', 'isAdmin'],
                     'shift'   => 'ml-2',
+
+                    'submenu' => 
+                    [
+                        [
+                            'text' => 'District/State',
+                            'icon'    => 'fas fa-globe-asia',
+                            'url'     => '#',
+                            'shift'   => 'ml-3',
+                            'submenu' => 
+                            [
+                                                       
+                                
+                                                
+                                [
+                                    'text' => 'District',
+                                    'icon'    => 'fas fa-award',
+                                    'url'  => 'view-district',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                                [
+                                    'text' => 'State',
+                                    'icon'    => 'fas fa-award',
+                                    'url'  => 'view-state',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                              
+                            ],      
+                        ],
+                                              
+                        [                
+                            'text'    => 'Company Master',
+                            'icon'    => 'fas fa-building',
+                            'url'     => 'view-company',
+                            'shift'   => 'ml-3',
+                                           
+                        ],
+                        [
+                            'text' => 'Assets',
+                            'icon'    => 'fas fa-award',
+                            'url'     => 'view-assets',
+                            'shift'   => 'ml-3',
+                        ],
+                        [                
+                            'text'    => 'Job',
+                            'icon'    => 'fas fa-user-md',
+                            'url'     => '#',
+                            'shift'   => 'ml-3',
+                            'submenu' => 
+                            [
+                                                      
+                              
+                                [
+                                    'text' => 'Employment Type',
+                                    'icon'    => 'fas fa-user-md',
+                                    'url'  => 'view-employee-type',
+                                    'shift'=> 'ml-4',
+                                    
+                                ],                  
+                               
+                                [
+                                    'text' => 'Work Shifts',
+                                    'icon'    => 'fas fa-business-time',
+                                    'url'  => 'view-workshift',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                            ],                    
+                           
+                        ], 
+                        [
+                            'text' => 'Qualification',
+                            'icon'    => 'fas fa-user-graduate',
+                            'url'     => '#',
+                            'shift'   => 'ml-3',
+                            'submenu' => 
+                            [
+                                                       
+                                
+                                                
+                                [
+                                    'text' => 'Education',
+                                    'icon'    => 'fas fa-book-open',
+                                    'url'  => 'view-education',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                                [
+                                    'text' => 'Skills',
+                                    'icon'    => 'fas fa-award',
+                                    'url'  => 'view-skills',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                            ],      
+                        ], 
+                        [
+                            'text' => 'Religions',
+                            'icon'    => 'fas fa-praying-hands',
+                            'url'     => 'all-religion',
+                            'shift'   => 'ml-3',
+                        ],
+                        [
+                            'text' => 'Nationalities',
+                            'icon'    => 'fas fa-globe-asia',
+                            'url'     => 'all-nationality',
+                            'shift'   => 'ml-3',
+                        ],
+                        [
+                            'text' => 'Language',
+                            'icon'    => 'fas fa-praying-hands',
+                            'url'     => 'view-language',
+                            'shift'   => 'ml-3',
+                        ],     
+                        [
+                            'text' => 'Leave Configure',
+                            'icon' => 'fas fa-level-down-alt',
+                            'url'  => '#',
+                            'shift'=> 'ml-3',
+                            'submenu' => 
+                            [
+                                [
+                                    'text' => 'Leave Period',
+                                    'icon'    => 'fas fa-sign-out-alt',
+                                    'url'  => 'view-leave-period',
+                                    'shift'=> 'ml-4',
+                                    
+                                ],                        
+                                [
+                                    'text' => 'Leave Type',
+                                    'icon'    => 'fas fa-sign-out-alt',
+                                    'url'  => 'view-leave-type',
+                                    'shift'=> 'ml-4',
+                                        
+                                ],
+                                [
+                                    'text' => 'Entitlements',
+                                    'icon'    => 'fas fa-binoculars',
+                                    'url'  => 'view-leave-entitlement',
+                                    'shift'=> 'ml-4',
+                                    
+                                 ], 
+                                [
+                                    'text' => 'Work week',
+                                    'icon'    => 'fas fa-binoculars',
+                                    'url'  => 'view-work-week',
+                                    'shift'=> 'ml-4',
+                                    
+                                ], 
+                                [
+                                  'text' => 'Holidays',
+                                  'icon'    => 'fas fa-binoculars',
+                                  'url'  => 'view-holiday',
+                                  'shift'=> 'ml-4',
+                                  
+                              ],                        
+                                
+                            ],  
+                            
+                        ],   
+                          
+                                     
+                        
+                    ],                    
+                   
+                ],
+            
+                [                
+                    'text'    => 'User Management',
+                    'icon'    => 'fas fa-users',
+                    'url'     => '#',
+                    'can'  => ['isSuperAdmin'],
+                    'shift'   => 'ml-2',
+
                     'submenu' => 
                     [
                         [
                             'text' => 'User',
+                            'icon'    => 'fas fa-user',
                             'url'  => 'view-user',
                             'shift'=> 'ml-3',
                             
-                        ],                        
+                        ], 
+                                              
                         [
-                            'text' => 'User Roles',
+                            'text' => 'Designation',
+                            'icon'    => 'fas fa-user-tag',
                             'url'  => 'view-role',
                             'shift'=> 'ml-3',
                                 
                         ],
                         [
-                            'text' => 'User Role Categories',
+                            'text' => 'Job Role',
+                            'icon'    => 'far fa-user-circle',
                             'url'  => 'view-sub-role',
                             'shift'=> 'ml-3',
                             
@@ -272,218 +455,78 @@ return [
                     ],                    
                    
                 ],
+                [
+                    'text' => 'Employee List',
+                    'icon'    => 'fas fa-street-view',
+                    'url'  => 'view-employee',
+                    'can'  => ['isSuperAdmin', 'isAdmin'],
+                    'shift'=> 'ml-2',
+                    
+                ],  
                 
-                [                
-                    'text'    => 'Job',
-                    'url'     => '#',
-                    'shift'   => 'ml-2',
-                    'submenu' => 
-                    [
-                        [
-                            'text' => 'Job Titles',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            
-                        ],                        
-                        [
-                            'text' => 'Pay Grade',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                                
-                        ],
-                        [
-                            'text' => 'Employment Status',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            
-                        ],                  
-                        [
-                            'text' => 'Job Categories',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            
-                        ], 
-                        [
-                            'text' => 'Work Shifts',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            
-                        ], 
-                    ],                    
-                   
-                ],
-                [                
-                    'text'    => 'Organization',
-                    'url'     => '#',
-                    'shift'   => 'ml-2',
-                    'submenu' => 
-                    [
-                        [
-                            'text' => 'General Info',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            
-                        ],                        
-                        [
-                            'text' => 'Companies',
-                            'url'  => '#',
-                            'shift'=> 'ml-3',
-                            'submenu' => 
-                            [
-                                [
-                            'text' => 'Locations',
-                            'url'  => '#',
-                            'shift'=> 'ml-4',
-                            'submenu' => 
-                            [
-                                [
-                            'text' => 'Departments',
-                            'url'  => '#',
-                            'shift'=> 'ml-5',
-                            
-                        ], 
-                            ]
-                            
-                        ],  
-                            ]
-                                
-                        ],
-                                       
-                        
-                        
-                    ],                    
-                   
-                ],
-
-                [
-                    'text' => 'Qualification',
-                    'url'     => '/configurations',
-                    'shift'   => 'ml-2',
-                ],
-                [
-                    'text' => 'Disciplinary actions',
-                    'url'     => '/configurations',
-                    'shift'   => 'ml-2',
-                ],
-                [
-                    'text' => 'Religion',
-                    'url'     => '/nationality',
-                    'shift'   => 'ml-2',
-                ],
-               
+          
             ],
         ],
         [
-            'text' => 'PIM',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            'submenu' => 
-            
-            [                
-                [
-                      'text' => 'Add Employee',
-                      'url'  => '#',
-                      'shift'=> 'ml-2',
-                      
-                  ],                        
-                  [
-                      'text' => 'Reports',
-                      'url'  => '#',
-                      'shift'=> 'ml-2',
-                          
-                  ],
-                  [
-                      'text' => 'Configuration',
-                      'url'  => '#',
-                      'shift'=> 'ml-2',
-                      
-                  ],                  
-                  [
-                      'text' => 'Employee List',
-                      'url'  => '#',
-                      'shift'=> 'ml-2',
-                      
-                  ],                                 
-             
-          ],
+            'text' => 'My Profile',
+            'url'  => 'add-info-tab',
+            'icon' => 'fas fa-info-circle',
+           
         ],
+      
         [
-            'text' => 'Leave',
+            'text' => 'Leave Tracker',
             'url'  => 'admin/settings',
+            
             'icon' => 'fas fa-level-down-alt',
             'submenu' => 
             
-                [                
+                [   
+                                
                     [
-                          'text' => 'Apply',
-                          'url'  => '#',
+                          'text' => 'Apply Leave',
+                          'icon' => 'fas fa-level-down-alt',
+                        
+                          'url'  => 'leave/create',
                           'shift'=> 'ml-2',
                           
-                      ],                        
+                      ],  
                       [
-                          'text' => 'My leave',
-                          'url'  => '#',
-                          'shift'=> 'ml-2',
-                              
-                      ],
+                        'text' => 'Leave Control',
+                        'icon' => 'fas fa-level-down-alt',
+                        'url'  => 'leave',
+                        'can'  => ['isSuperAdmin', 'isAdmin'],
+                        'shift'=> 'ml-2',
+                        
+                      ],                         
+                  
+                                     
                       [
-                          'text' => 'Configure',
+                          'text' => 'Leave View',
+                          'icon' => 'fas fa-level-down-alt',
                           'url'  => '#',
+                          'can'  => ['isSuperAdmin', 'isAdmin'],
                           'shift'=> 'ml-2',
                           'submenu' => 
                           [
-                              [
-                                  'text' => 'Leave Period',
-                                  'url'  => 'view-leave-period',
-                                  'shift'=> 'ml-3',
-                                  
-                              ],                        
-                              [
-                                  'text' => 'Leave Type',
-                                  'url'  => 'view-leave-type',
-                                  'shift'=> 'ml-3',
-                                      
-                              ],
-                              [
-                                  'text' => 'Work week',
-                                  'url'  => 'view-work-week',
-                                  'shift'=> 'ml-3',
-                                  
-                              ], 
-                              [
-                                'text' => 'Holidays',
-                                'url'  => 'view-holiday',
+                            [
+                                'text' => 'Employee Leave List',
+                                'icon' => 'fas fa-sign-out-alt',
+                                'url'  => 'view-all-leave',
+                                'can'  => ['isSuperAdmin', 'isAdmin'],
                                 'shift'=> 'ml-3',
                                 
                             ],                        
-                              
-                          ],  
-                          
-                      ],                  
-                      [
-                          'text' => 'Reports',
-                          'url'  => '#',
-                          'shift'=> 'ml-2',
+                    
+                            
+                        ],  
                           
                       ], 
-                      [
-                          'text' => 'Entitlements',
-                          'url'  => '#',
-                          'shift'=> 'ml-2',
-                          
-                       ],     
-                       [
-                          'text' => 'Leave List',
-                          'url'  => '#',
-                          'shift'=> 'ml-2',
-                          
-                      ], 
-                      [
-                          'text' => 'Assign Leave',
-                          'url'  => '#',
-                          'shift'=> 'ml-2',
-                          
-                      ],                
+                      
+                     
+                      
+                      
+                                   
                  
               ],
            
@@ -495,12 +538,7 @@ return [
             'icon' => 'fas fa-business-time',
            
         ],
-        [
-            'text' => 'MyInfo',
-            'url'  => 'add-info-tab',
-            'icon' => 'fas fa-info-circle',
-           
-        ],
+        
       
     ],
 

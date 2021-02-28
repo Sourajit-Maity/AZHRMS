@@ -4,8 +4,8 @@
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Leave' => '#',
     'Configure' => '#',
-    'View Work Week' => route('view-work-week'),
-'This page',
+    'Work Week' => route('view-work-week'),
+
 ]])
 @section('plugins.Datatables', true)
  
@@ -14,7 +14,7 @@
         <div class="panel-body">
         <div class="row">
     <div class="form-group col-md-6">
-                <h2>Leave Type List</h2>
+                <h2>Work Week</h2>
                 
             </div>
            

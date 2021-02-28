@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Redirect,Response,DB,Config;
 use Datatables;
-use App\User;
+use App\Models\User;
 class UsersController extends Controller
 {
     public function index()

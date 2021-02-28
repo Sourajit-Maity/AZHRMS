@@ -3,9 +3,8 @@
 @section('content')
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Admin' => '#',
-    'User Management' => '#',
-    'User' => route('view-user'),
-'This page',
+    'User Management' => route('view-user'),
+
 ]])
 @section('plugins.Datatables', true)
  
@@ -28,10 +27,10 @@
             <table id="myTable"  class="table table-bordered  table-striped {{ count($users) > 0 ? 'datatable' : '' }} pointer">
 					<thead>
 					<tr>
-                       <th>User Name</th>
+                      
                         <th>User Role</th>
                         <th>Employee Name</th>
-                        <th>Status</th>
+                        <th>Email</th>
                         <th>Actions</th>
 
 					</tr>
@@ -43,10 +42,10 @@
 							<tr data-entry-id="{{ $value->id }}" data-order="{{$value->id}}">
 
 							
-								<td>{{ $value->user_id }}</td>
+								
                                 <td>{{ $value->display_name }}</td>
                                 <td>{{ $value->u_name }}</td>
-                                <td>{{ $value->id }}</td>
+                                <td>{{ $value->email }}</td>
                                 <td> <a href="{{ route('edit-user',[$value->id]) }}" class="btn btn-xs btn-info">
                                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i><i class="fas fa-edit"></i></a>
                              <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal{{$value->id}}"><i class="far fa-trash-alt"></i></button></td>

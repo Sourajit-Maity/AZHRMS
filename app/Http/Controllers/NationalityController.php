@@ -1,71 +1,97 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use App\Models\Nationality;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use App\Models\AzhrmsNationality;
-use App\Menu;
+use Illuminate\Support\Facades\Validator;
 
 class NationalityController extends Controller
 {
-    public function index()
-    {
-        $nationality = AzhrmsNationality::latest()->paginate(5);
 
-        $menu = new Menu;
-        $menuList = $menu->tree();
-  
-        return view('nationality.index',compact('nationality'))
-            ->with('i','menulist', $menuList,(request()->input('page', 1) - 1) * 5);
+
+
+    public function addNationality()
+    {
+        return view('nationality.add-nationality');
     }
 
-    public function create()
-    {
+
+    public function registerNationality(Request $request)
+   {
+       
+        $this->validate($request, [
+    
+            'name'  => 'required|string|max:120',
+            
+            
+        ]);
+
+        Nationality::create([
+           
+           'name' => $request->get('name'),
+           
+         
+       ]);
+
+     
+
+       return Redirect::to('all-nationality')->with('success','Nationality Created Successfully!');
+   }
+
+
+   public function viewnationality(Request $request)
+   {
+
+    
+        $nationalities = DB::table('azhrms_nationalities')->get();
+            
+        return view('nationality.viewallnationality',compact('nationalities',));
+   } 
+
+
+   public function editNationality($id)
+   {
+       $nationalityedit = Nationality::findOrFail($id);
+
+       return view('nationality.edit-nationality', compact('nationalityedit') );
+   }
+
+
+   public function updateNationality($id, Request $request)
+   {
+       
+        $this->validate($request, [
+ 
+        'name'  => 'required|string|max:120',
+       
         
-        return view('nationality.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            //'title' => 'required',
-            'name' => 'required'
         ]);
-  
-        AzhrmsNationality::create($request->all());
-   
-        return redirect()->route('nationality.index')
-                        ->with('success','Nationality created successfully.');
-    }
 
-    public function edit(AzhrmsNationality $nationality)
-    {
-        return view('nationality.edit',compact('nationality'));
-    }
+       $role= Nationality::findOrFail($id);
+       $role->update($request->all());
+      
+       return Redirect::back()->with('success','Successfully Updated!');
+   }
 
-    public function update(Request $request, AzhrmsNationality $nationality)
+   public function deletenationality(Request $request,$id)
     {
-        $request->validate([
-            // 'title' => 'required',
-            'name' => 'required'
-        ]);
-  
-        $nationality->update($request->all());
-  
-        return redirect()->route('nationality.index')
-                        ->with('success','Nationality updated successfully');
-    }
 
-    public function destroy(AzhrmsNationality $nationality)
-    {
-        $nationality->delete();
-  
-        return redirect()->route('nationality.index')
-                        ->with('success','Nationality deleted successfully');
+        Nationality::where('id',$id)->delete();
+        
+        return Redirect::back();
     }
-
-    public function show(AzhrmsNationality $nationality)
+    function Conform_Delete()
     {
-        return view('nationality.show',compact('nationality'));
+        return confirm("Are You Sure Want to Delete?");
+
     }
 }
+
+

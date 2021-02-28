@@ -3,9 +3,9 @@
 @section('content')
 @include('include.breadcrumbs', ['breadcrumbs' => [
     'Admin' => '#',
-    'User Management' => '#',
+    'User Management' => route('view-user'),
     'Add User' => route('add-user'),
-'This page',
+
 ]])
 <div class="container">
     <div class="row justify-content-center">
@@ -45,25 +45,31 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('USER ID') }}</label>
+                           <label for="operational_company_id" class="col-md-4 col-form-label text-md-right">{{ __('Company') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_id" type="text" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') }}" required autocomplete="user_id">
-
-                                @error('user_id')
+                            
+                                <select id="operational_company_id" name="operational_company_id" class="form-control @error('operational_company_id') is-invalid @enderror">
+                                    <option value="" disabled selected>Select Company</option>
+                                    @foreach ($company as $key => $value)
+                               
+                                      <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach 
+                                </select>
+                                @error('operational_company_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                            </div>
                        
                         <div class="form-group row">
                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('ROLE') }}</label>
 
                             <div class="col-md-6">
                             
-                                <select id="role" name="role" class="form-control">
+                                <select id="role" name="role" class="form-control @error('role') is-invalid @enderror">
                                     <option value="" disabled selected>Select Role</option>
                                     @foreach($roles as $role)
                                         <option value="{{$role->id}}">{{$role->name}}</option>
@@ -104,6 +110,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                
                             </div>
                         </div>
                     </form>

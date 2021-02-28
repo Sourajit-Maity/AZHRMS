@@ -6,7 +6,7 @@
     'Leave' => '#',
     'Configure' => '#',
     'View Leave period' => route('view-leave-period'),
-'This page',
+
 ]])
 
 @section('plugins.Datatables', true)
@@ -20,7 +20,9 @@
                 
             </div>
             
-            
+			<div class="form-group col-md-6"; align="right">
+                <a class="btn btn-success" href="{{ route('add-leave-period') }}"><i class="fas fa-plus-square"></i></a>
+            </div>
         </div>
             <div class="table-responsive">
 			<div class="table-responsive">
@@ -44,7 +46,7 @@
 
 				
                                 <td>{!! \Carbon\Carbon::parse($value->leave_period_start_date)->format('d M Y') !!}</td>
-                                <td>{!! \Carbon\Carbon::parse($value->leave_period_start_date)->addYears(1)->format('d M Y') !!}</td>
+                                <td>{!! \Carbon\Carbon::parse($value->leave_period_start_date)->addDays(364)->format('d M Y') !!}</td>
                               
                                 <td> <a href="{{ route('leave-period',[$value->id]) }}" class="btn btn-xs btn-info">
                                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i><i class="fas fa-edit"></i></a>                             
